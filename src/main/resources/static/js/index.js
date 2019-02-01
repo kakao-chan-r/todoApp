@@ -1,11 +1,9 @@
 $(document).ready(function() {
-    fnTodoList();
+    $.ajaxSetup({ cache: false }); // ajax cache 설정 : IE 에서 rest API 호출 시 time stamp를 통한 cache 방지
+    fnTodoList(1);
 
     $('#addTodoBtn').on('click',function(){
         fnAddTodo();
-    });
-    $('#task').on('click', function() {
-        fnReadTodo();
     });
     $('#deleteTodo').on('click',function(){
         fnDeleteTodo();
@@ -40,7 +38,12 @@ $(document).ready(function() {
         $('select').moveToListAndDelete('#refTaskSelect', '#taskSelect');
         e.preventDefault();
     });
-    $(".container-fluid").keyup(function(e){if(e.keyCode == 13)  fnAddTodo(); });
+
+    $('#todoText').on("keypress", function (e) {
+        if (e.keyCode === 13) {
+            fnAddTodo();
+        }
+    });
 });
 
 let curPage = 0;
@@ -67,6 +70,8 @@ function fnTodoList(currentPage){
             let todoList    = response.todoList;
             let pageConfig  = response.pageConfig;
             curPage = currentPage;
+            $('#tableTbody').html('');
+            $('.pagination').html('');
             fnTbodyGrid(todoList);
             fnPageNavGrid(pageConfig);
         },
