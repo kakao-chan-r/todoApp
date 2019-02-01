@@ -1,7 +1,3 @@
-/*
-
-JPA Entity 사용으로 schema.sql은 사용하지않는다.
-*/
 CREATE TABLE TODO
 (
   ID BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL,

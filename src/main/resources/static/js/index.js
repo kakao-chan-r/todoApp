@@ -48,12 +48,6 @@ $(document).ready(function() {
 
 let curPage = 0;
 
-/**
- * cacheBoolean
- Default: true, dataType 이 'script' 와 'jsonp' 일때는 false로 세팅
- 만일 이 값을 false로 하면, 브라우저의 캐쉬사용을 강제적으로 막습니다. 또한 false 세팅하면 URL 쿼리 스트링에 "_=[TIMESTAMP]" 값이 추가됩니다.
- * @param data
- */
 function fnTodoList(currentPage){
     const todo = {
         currentPage : currentPage,
