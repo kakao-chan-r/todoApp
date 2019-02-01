@@ -1,0 +1,26 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  thymeleaf:
+    cache: false
+  http:
+    encoding:
+      charset: UTF-8
+  datasource:
+    #driver-class-name: org.h2.Driver
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #url: jdbc:h2:mem:testdb
+    url: jdbc:log4jdbc:h2:mem:testdb
+    username: sa
+    password:
+    initialization-mode: always
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package : com.kakaoix.dto
+dev:
+  data:
+    perpage : 5
+    currentpage : 1
