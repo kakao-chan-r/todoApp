@@ -20,7 +20,3 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package : com.kakaoix.dto
-dev:
-  data:
-    perpage : 5
-    currentpage : 1
