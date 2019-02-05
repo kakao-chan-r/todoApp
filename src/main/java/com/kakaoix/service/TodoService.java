@@ -23,13 +23,10 @@ public class TodoService {
         PageDto pageDto = new PageDto();
         pageDto.setPageConfig(pageConfig);
         List<TodoDto> returnDto = todoMapper.selectTodoList(pageDto);
-        int listIndex = 0;
-        for (TodoDto dto : returnDto) {
-            if( dto.getRefCnt() > 0 ){ // 참조된 Todo가 존재
-                dto.setRefList(todoMapper.selectRefList(dto.getId())); // 참조된 id list (상태정보 포함)
-                returnDto.set(listIndex, dto);
+        for ( int i = 0; i < returnDto.size(); i++){
+            if(returnDto.get(i).getRefCnt() > 0){ // 참조된 Todo가 존재
+                returnDto.get(i).setRefList(todoMapper.selectRefList(returnDto.get(i).getId())); // 참조된 id List set(상태정보 포함)
             }
-            listIndex++;
         }
         pageDto.setTodoList(returnDto);
         return pageDto;
