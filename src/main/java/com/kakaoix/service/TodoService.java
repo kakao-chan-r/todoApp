@@ -43,8 +43,8 @@ public class TodoService {
     @Transactional(readOnly = true)
     public TodoDto readTodo(Long id){
         TodoDto todoDtlDto = todoMapper.selectTodo(id);                // 자신의 todo 상세 정보
-        todoDtlDto.setRefList(todoMapper.selectRefList(id));           // 자신을 참조하는 todo list
-        todoDtlDto.setPossRefList(todoMapper.selectPossRefList(id));   // 자신과 자신을 참조하지 않는 todo list
+        todoDtlDto.setRefList(todoMapper.selectRefList(id));           // 참조된 todo list
+        todoDtlDto.setPossRefList(todoMapper.selectPossRefList(id));   // 참조가능한 todo list
         return todoDtlDto;
     }
 
