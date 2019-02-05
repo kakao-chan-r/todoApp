@@ -19,4 +19,4 @@
 - BootStrap
 
 ### Todo Flow Chart ###
-[View Click](https://postfiles.pstatic.net/MjAxOTAyMDVfMjYy/MDAxNTQ5Mzc1MzQ0NzA2.fgea3x1A2LDll2LnfgthiJuojNvprYNOoJA1TzAeP9og.us3TtNfgAirceqEf6gnk65CMW6wNkR1L1wKwlIKIksog.PNG.dharmanet/Todo_flowchart.png?type=w966)
+Check Email
