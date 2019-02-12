@@ -16,6 +16,7 @@
 - SpringBoot 2.1.1
 - JAVA 1.8
 - H2 Database
+- MyBatis
 - BootStrap
 
 ### Todo Flow Chart ###

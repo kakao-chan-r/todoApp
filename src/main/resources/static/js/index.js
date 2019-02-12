@@ -114,6 +114,17 @@ function fnAddTodo(){
  * @param
  */
 function fnModifyTodo(){
+    let modalTaskText = $('#modalTaskText').val();
+    if( modalTaskText == ""){
+        alert("내용을 입력해 주세요.");
+        $('#modalTaskText').focus();
+        return;
+    }
+    if(modalTaskText.length > 255){
+        alert("내용은 255자가 넘을 수 없습니다.");
+        $('#modalTaskText').focus();
+        return;
+    }
     let selectIdList    = [];
     let selectRefIdList = [] ;
 
@@ -121,7 +132,7 @@ function fnModifyTodo(){
     $("#taskSelect option").each(function() { selectIdList.push($(this).val()); }); // 참조되지 않은 id list
     const modifyTodo = {
         id :  $('#modalId').val(),
-        task : $('#modalTaskText').val(),
+        task : modalTaskText,
         status : $('input:checkbox[id="modalStatus"]').is(":checked"),
         refIdList: selectRefIdList,
         idList : selectIdList
@@ -175,7 +186,11 @@ function fnChkDelTodo(){
             checkIdList.push($(this).val());
         }
     });
-    if(confirm("선택 항목을 삭제 하시겠습니까?")) {
+    if(checkIdList.length == 0){
+        alert('선택된 항목이 없습니다.');
+        return;
+    }
+    if(confirm("선택된 항목을 삭제 하시겠습니까?")) {
         const deleteAllTodo = {
             idList : checkIdList
         }
@@ -304,7 +319,7 @@ function fnModalGrid(response){
     }
     if(response.refList.length>0){  // 자신을 참조하는 todo list
         for(let j = 0; j < response.refList.length; j++){
-            let refList = response.refList[j].id + ' ' + response.refList[j].task;
+            let refList = response.refList[j].id + ' ' + response.refList[j].task;modalTaskText
             refHtml += '<option value=\n' + response.refList[j].id + '\n>' + refList + '</option>';
         }
         $("#refTaskSelect").append(refHtml);
